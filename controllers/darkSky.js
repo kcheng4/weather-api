@@ -2,9 +2,10 @@ const _ = require('lodash');
 const axios = require('axios');
 const {darkSkyKey} = require('../keys/darkSkyKey');
 
+const key = darkSkyKey || process.env.DARK_SKY_KEY;
 
 const darkSky = (lat, lng) =>{
-    return axios.get(`https://api.darksky.net/forecast/${darkSkyKey}/${lat},${lng}`)
+    return axios.get(`https://api.darksky.net/forecast/${key}/${lat},${lng}`)
     .then((res)=>{
         let weatherArray=[];
         for(let x=0;x<5;x++){
